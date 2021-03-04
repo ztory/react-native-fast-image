@@ -16,6 +16,7 @@ Pod::Spec.new do |s|
   s.source_files  = "ios/**/*.{h,m}"
 
   s.dependency 'React-Core'
-  s.dependency 'SDWebImage', :git => "https://github.com/ztory/SDWebImage"
+  s.dependency 'SDWebImage'
   s.dependency 'SDWebImageWebPCoder', '~> 0.6.1'
+  s.dependency :git => 'git@github.com:ztory/ZMEncryption.git'
 end
