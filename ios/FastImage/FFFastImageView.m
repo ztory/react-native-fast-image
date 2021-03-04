@@ -1,5 +1,6 @@
 #import "FFFastImageView.h"
 #import <SDWebImage/UIImage+MultiFormat.h>
+#import <ZMEncryption/NSData+ZMEncryption.h>
 
 @interface FFFastImageView()
 
@@ -126,7 +127,8 @@
                 self.hasSentOnLoadStart = NO;
             }
             // Use SDWebImage API to support external format like WebP images
-            UIImage *image = [UIImage sd_imageWithData:[NSData dataWithContentsOfURL:_source.url]];
+            NSData* data = [NSData dataWithContentsOfURL:_source.url];
+            UIImage *image = [UIImage sd_imageWithData:[data unscrambleDataError:nil]];
             [self setImage:image];
             if (self.onFastImageProgress) {
                 self.onFastImageProgress(@{
